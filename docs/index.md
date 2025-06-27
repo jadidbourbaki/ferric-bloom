@@ -6,6 +6,7 @@ title: Ferric Bloom
 # Ferric Bloom
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-❤️-pink.svg)](https://github.com/sponsors/jadidbourbaki)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/jadidbourbaki/ferric-bloom)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Rust](https://img.shields.io/badge/rust-1.70%2B-brightgreen.svg)](https://www.rust-lang.org)
 [![Python Bindings](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org)
