@@ -20,12 +20,12 @@ A **high-performance Bloom filter library** written in Rust with cache-optimized
 Comprehensive benchmarks against **blowchoc** (state-of-the-art Python+Numba implementation):
 
 ### Insert Performance
-![Insert Throughput](tests/ferric_vs_blowchoc_insert_throughput.png)
-![Insert Time](tests/ferric_vs_blowchoc_insert_time.png)
+<img src="tests/ferric_vs_blowchoc_insert_throughput.png" alt="Insert Throughput" width="400">
+<img src="tests/ferric_vs_blowchoc_insert_time.png" alt="Insert Time" width="400">
 
 ### Query Performance  
-![Query Throughput](tests/ferric_vs_blowchoc_query_throughput.png)
-![Query Time](tests/ferric_vs_blowchoc_query_time.png)
+<img src="tests/ferric_vs_blowchoc_query_throughput.png" alt="Query Throughput" width="400">
+<img src="tests/ferric_vs_blowchoc_query_time.png" alt="Query Time" width="400">
 
 ### Key Results (200 elements)
 - **Insert Performance**: **34,860× faster** (9.9M vs 285 ops/sec)
