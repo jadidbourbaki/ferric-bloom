@@ -1,0 +1,24 @@
+# Requirements for ferric-bloom vs blowchoc testing environment
+# Install with: pip install -r requirements-testing.txt
+
+# Core scientific computing
+numpy>=2.0.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.5.0
+
+# Numba for blowchoc performance
+numba>=0.58.0
+llvmlite>=0.41.0
+
+# Testing framework
+pytest>=7.0.0
+
+# Progress bars for benchmarks
+tqdm>=4.60.0
+
+# Note: ferric-bloom and blowchoc need to be installed separately:
+# 1. ferric-bloom: Install from project root with `maturin develop --release`
+# 2. blowchoc: Install from blowchoc/ subdirectory with `pip install -e .`

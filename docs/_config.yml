@@ -1,0 +1,56 @@
+title: Ferric Bloom
+description: High-performance Bloom filter library written in Rust with cache-optimized blocked designs
+baseurl: "/ferric-bloom"
+url: "https://jadidbourbaki.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+header_pages:
+  - README.md
+  - PYTHON_BINDINGS.md
+  - COMPARISON.md
+  - tests/README.md
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Exclude files from processing
+exclude:
+  - target/
+  - Cargo.toml
+  - Cargo.lock
+  - .gitignore
+  - blowchoc/
+  - src/
+  - .venv*/
+  - "*.pdf"
+
+# Include files that would normally be excluded
+include:
+  - tests/README.md 

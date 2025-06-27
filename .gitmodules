@@ -1,0 +1,3 @@
+[submodule "blowchoc"]
+	path = blowchoc
+	url = https://gitlab.com/rahmannlab/blowchoc-filters.git

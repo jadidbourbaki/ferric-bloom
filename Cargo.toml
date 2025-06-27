@@ -1,0 +1,35 @@
+[package]
+name = "ferric-bloom"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A high-performance Bloom filter and Blocked Bloom filter library inspired by cache-line optimization"
+license = "MIT"
+repository = "https://github.com/yourname/ferric-bloom"
+keywords = ["bloom-filter", "probabilistic", "data-structure", "cache-efficient"]
+categories = ["data-structures", "algorithms"]
+
+[dependencies]
+bit-vec = "0.6"
+fnv = "1.0"
+rand = "0.8"
+pyo3 = { version = "0.20", features = ["extension-module"], optional = true }
+numpy = { version = "0.20", optional = true }
+
+[dev-dependencies]
+criterion = "0.5"
+
+[lib]
+name = "ferric_bloom"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "rust_micro_benchmark"
+path = "src/bin/rust_micro_benchmark.rs"
+
+[features]
+default = []
+python = ["pyo3", "numpy"]
+
+# Python module is built as library, not binary 
