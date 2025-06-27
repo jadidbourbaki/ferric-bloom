@@ -105,10 +105,9 @@ cd tests && python ferric_vs_blowchoc_benchmark.py
 
 ## Documentation
 
-Complete documentation is available on [GitHub Pages](https://jadidbourbaki.github.io/ferric-bloom/), including:
-- [Python Bindings Guide](https://jadidbourbaki.github.io/ferric-bloom/python-bindings/)
-- [Performance Comparison](https://jadidbourbaki.github.io/ferric-bloom/comparison/)
-- [Testing Environment Setup](https://jadidbourbaki.github.io/ferric-bloom/testing/)
+- [Python Bindings Guide](PYTHON_BINDINGS.md)
+- [Performance Comparison](COMPARISON.md)
+- [Testing Environment Setup](tests/README.md)
 
 ## Acknowledgments
 
