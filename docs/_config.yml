@@ -16,10 +16,7 @@ plugins:
 
 # Navigation
 header_pages:
-  - README.md
-  - PYTHON_BINDINGS.md
-  - COMPARISON.md
-  - tests/README.md
+  - index.md
 
 # Collections
 collections:
