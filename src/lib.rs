@@ -1,16 +1,11 @@
 //! # Ferric Bloom
 //!
-//! A high-performance Bloom filter and Blocked Bloom filter library optimized for cache efficiency.
-//! Inspired by the blocked bloom filter design with 512-bit cache-aligned blocks.
+//! A high-performance blocked bloom filter library implementing the exact BlowChoc algorithm.
+//! Provides both Rust and Python APIs with bit-level parity to the original numba implementation.
 
-pub mod blocked_bloom;
-pub mod bloom;
-pub mod hash;
-pub mod utils;
+pub mod blowchoc;
 
-pub use blocked_bloom::BlockedBloomFilter;
-pub use bloom::BloomFilter;
-pub use hash::{AffineHash, HashFunction, LinearHash};
+pub use blowchoc::{BitVersion, BlowChocExactFilter};
 
 // Python bindings
 #[cfg(feature = "python")]
@@ -43,33 +38,32 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_basic_bloom_filter() {
-        let mut bloom = BloomFilter::new(1000, 10).unwrap();
+    fn test_blowchoc_exact_filter() {
+        let mut filter = BlowChocExactFilter::new(
+            4_u64.pow(10), // 4^10 universe
+            1,             // 1 subfilter
+            100,           // 100 blocks
+            2,             // 2 choices
+            8,             // 8 bits per key
+            BitVersion::Random,
+            0.0, // sigma
+            1.0, // theta
+            0.0, // beta
+            0.0, // mu
+        )
+        .unwrap();
 
         // Insert some keys
-        bloom.insert(42);
-        bloom.insert(1337);
-        bloom.insert(9999);
+        filter.insert(42);
+        filter.insert(1337);
+        filter.insert(9999);
 
-        // Test membership
-        assert!(bloom.contains(42));
-        assert!(bloom.contains(1337));
-        assert!(bloom.contains(9999));
+        // Test lookups
+        assert!(filter.lookup(42));
+        assert!(filter.lookup(1337));
+        assert!(filter.lookup(9999));
 
-        // Test non-membership (may have false positives)
-        assert!(!bloom.contains(1) || true); // Allow false positive
-    }
-
-    #[test]
-    fn test_basic_blocked_bloom_filter() {
-        let mut blocked = BlockedBloomFilter::new(1000, 10, 2).unwrap();
-
-        // Insert some keys
-        blocked.insert(42);
-        blocked.insert(1337);
-
-        // Test membership
-        assert!(blocked.contains(42));
-        assert!(blocked.contains(1337));
+        assert_eq!(filter.len(), 3);
+        assert!(!filter.is_empty());
     }
 }

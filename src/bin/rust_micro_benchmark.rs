@@ -1,4 +1,4 @@
-use ferric_bloom::BlockedBloomFilter;
+use ferric_bloom::{BitVersion, BlowChocExactFilter};
 use std::time::Instant;
 
 fn main() {
@@ -24,13 +24,26 @@ fn main() {
         }
 
         // Configuration (same as Python benchmark)
+        let universe = 4_u64.pow(12); // 4^12 = 16,777,216
         let nblocks = 100;
-        let bits_per_key = 8;
+        let nbits = 8;
         let nchoices = 2;
 
         // Create filter
         let start = Instant::now();
-        let mut filter = BlockedBloomFilter::new(nblocks, bits_per_key, nchoices).unwrap();
+        let mut filter = BlowChocExactFilter::new(
+            universe,
+            1, // nsubfilters
+            nblocks,
+            nchoices,
+            nbits,
+            BitVersion::Random,
+            0.0, // sigma
+            1.0, // theta
+            0.0, // beta
+            0.0, // mu
+        )
+        .unwrap();
         let creation_time = start.elapsed().as_secs_f64();
 
         // Generate test data
@@ -54,7 +67,7 @@ fn main() {
         let start = Instant::now();
         let mut hits = 0;
         for &key in &sample_keys {
-            if filter.contains(key) {
+            if filter.lookup(key) {
                 hits += 1;
             }
         }
@@ -64,7 +77,7 @@ fn main() {
         let start = Instant::now();
         let mut false_positives = 0;
         for &key in &query_keys {
-            if filter.contains(key) {
+            if filter.lookup(key) {
                 false_positives += 1;
             }
         }

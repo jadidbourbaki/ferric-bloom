@@ -4,61 +4,49 @@ build-backend = "maturin"
 
 [project]
 name = "ferric-bloom"
-description = "High-performance Bloom filters and Blocked Bloom filters implemented in Rust"
-readme = "README.md"
-license = {file = "LICENSE"}
+version = "0.1.0"
+description = "High-performance Bloom filters with both Python/numba and Rust implementations"
 authors = [
-    {name = "Ferric Bloom Contributors"}
+    {name = "Your Name", email = "your.email@example.com"},
 ]
-keywords = ["bloom-filter", "probabilistic", "data-structure", "cache-efficient", "rust"]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
-    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9", 
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Rust",
     "Topic :: Scientific/Engineering",
-    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-requires-python = ">=3.8"
 dependencies = [
-    "numpy>=1.20",
+    "numpy",
+    "numba",
 ]
-dynamic = ["version"]
 
 [project.optional-dependencies]
-test = [
-    "pytest>=6.0",
-    "numpy>=1.20",
-]
-benchmark = [
-    "pytest-benchmark>=3.4",
-    "matplotlib>=3.5",
-    "pandas>=1.3",
-]
 dev = [
-    "pytest>=6.0",
-    "pytest-benchmark>=3.4",
-    "numpy>=1.20",
-    "matplotlib>=3.5",
-    "pandas>=1.3",
-    "maturin>=1.0",
+    "pytest",
+    "pytest-benchmark",
+    "matplotlib",
+    "seaborn",
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/ferric-bloom"
-Repository = "https://github.com/yourusername/ferric-bloom"
-Documentation = "https://github.com/yourusername/ferric-bloom"
-Issues = "https://github.com/yourusername/ferric-bloom/issues"
+Repository = "https://github.com/your-username/ferric-bloom"
+Documentation = "https://ferric-bloom.readthedocs.io"
 
 [tool.maturin]
-features = ["python"]
 python-source = "python"
-module-name = "ferric_bloom" 
+module-name = "ferric_bloom"
+features = ["python"]
+
+[project.scripts]
+blowchoc = "blowchoc.blowchoc.blowchoc_main:main" 
